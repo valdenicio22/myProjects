@@ -14,6 +14,15 @@ export function App() {
   const [filteredTodoList, setFilteredTodoList] = useState([]);
 
   useEffect(() => {
+    getLocalTodoList();
+  }, [])
+
+  useEffect(() => {
+    filterHandler();
+    saveLocalTodoList();
+  }, [todoList, status])
+
+  const filterHandler = () => {
     if (status === 'completed') {
       setFilteredTodoList(todoList.filter(task => task.taskCompleted));
       return;
@@ -23,7 +32,19 @@ export function App() {
       return;
     }
     setFilteredTodoList(todoList);
-  }, [todoList, status])
+  }
+
+  const saveLocalTodoList = () => {
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+  }
+  const getLocalTodoList = () => {
+    if (localStorage.getItem("todoList") === null) {
+      //localStorage.setItem("todoList", JSON.stringify([]));
+    } else {
+      let localTodoList = JSON.parse(localStorage.getItem("todoList"));
+      setTodoList(localTodoList);
+    }
+  }
 
   return (
     <div className="App">
