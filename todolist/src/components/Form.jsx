@@ -5,25 +5,34 @@ export function Form(props) {
     }
     function buttonTodoHandler(e) {
         e.preventDefault();
+        if (!props.inputTodoList) return;
+
         props.setTodoList(
             [
                 ...props.todoList,
-                { ...task }
+                {
+                    taskCompleted: false,
+                    taskDescription: props.inputTodoList,
+                    taskId: Math.random() * 100,
+                },
             ]
         )
+        props.setInputTodoList('');
     }
-    const task = {
-        taskCompleted: false,
-        taskDescription: props.inputTodoList,
-        taskID: Math.random() * 100,
-    }
-    console.log(task);
-    console.log(props.todoList);
 
     return (
         <form>
-            <input type="text" className="todo-input" onChange={inputTodoListHandler} />
-            <button className="todo-button" type="submit" onClick={buttonTodoHandler}>
+            <input
+                type="text"
+                className="todo-input"
+                onChange={inputTodoListHandler}
+                value={props.inputTodoList}
+            />
+            <button
+                className="todo-button"
+                type="submit"
+                onClick={buttonTodoHandler}
+            >
                 <i className="fas fa-plus-square"></i>
             </button>
             <div className="select">
