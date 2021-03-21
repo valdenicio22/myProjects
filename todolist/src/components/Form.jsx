@@ -19,6 +19,9 @@ export function Form(props) {
         )
         props.setInputTodoList('');
     }
+    function statusHandler(e) {
+        props.setStatus(e.target.value)
+    }
 
     return (
         <form>
@@ -36,7 +39,7 @@ export function Form(props) {
                 <i className="fas fa-plus-square"></i>
             </button>
             <div className="select">
-                <select name="todos" className="filter-todo">
+                <select name="todos" className="filter-todo" onChange={statusHandler}>
                     <option value="all">All</option>
                     <option value="completed">Completed</option>
                     <option value="uncompleted">Uncompleted</option>
