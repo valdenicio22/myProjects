@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import React, { useState, useEffect} from 'react';
 import { GlobalStyle } from './styles/global';
+import { Header } from './components/Header/index';
 
 export function App() {
 
@@ -23,7 +24,7 @@ export function App() {
   // }
 
   return (
-    <div className="App">
+    <>
       {/* <form className="search-form">
         <input type="text" className="search-bar" />
         <button 
@@ -31,9 +32,8 @@ export function App() {
           // onClick={buttonClickHandler}
         >Search</button>
       </form> */}
-      <h1>MyRecepis</h1>
+      <Header />
       <GlobalStyle />
-      
-    </div>
+    </>
   );
 }
