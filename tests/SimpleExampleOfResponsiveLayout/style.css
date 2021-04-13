@@ -1,0 +1,53 @@
+body {
+  padding: 15px;
+  background:#eee;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.caixa {
+	border: solid 1px #666;
+	padding: 5px 10px;
+	margin: 40px;
+}
+
+.area-visivel span {
+	color: #666;
+	display: none;
+}
+
+/* max-width  */
+@media screen and (max-width: 600px) {/*até 600px execute esse @media*/
+	.um {
+		background: #F9C;
+	}
+	span.lt600 {
+		display: inline-block;
+	}
+}
+
+/* min-width */
+@media screen and (min-width: 900px) { /* a partir de 900px execute esse @media */
+	.dois {
+		background: #F90;
+	}
+	span.gt900 {
+		display: inline-block;
+	}
+}
+
+/* min-width & max-width */
+@media screen and (min-width: 600px) and (max-width: 900px) {
+	.tres {
+		background: #9CF;
+	}
+	span.bt600-900 {
+		display: inline-block;
+	}
+}
+
+/* max device width */
+@media screen and (max-device-width: 480px) {
+	.iphone {
+		background: #ccc;
+	}
+}
